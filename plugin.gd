@@ -1,10 +1,10 @@
 tool
 extends EditorPlugin
 
-func _enter_tree():
-	var base_path = get_script().get_path().get_base_dir()
-	add_autoload_singleton("Kit", base_path.plus_file("kit.gd"))
 
+func _enter_tree():
+	add_autoload_singleton("Kit", "res://addons/adventure-kit/kit.gd")
+	add_autoload_singleton("Window", "res://addons/adventure-kit/ui/Window/Window.tscn")
 	if !ProjectSettings.has_setting("addons/kit/auto_mode_delay"):
 		ProjectSettings.set_setting("addons/kit/auto_mode_delay", 3)
 	
@@ -40,6 +40,8 @@ func _enter_tree():
 
 
 func _exit_tree():
+	remove_autoload_singleton("Kit")
+	remove_autoload_singleton("Window")
 	ProjectSettings.set_setting("addons/kit/auto_mode_delay", null)
 	ProjectSettings.set_setting("addons/kit/skip_delay", null)
 	ProjectSettings.set_setting("addons/kit/typing_effect_delay", null)

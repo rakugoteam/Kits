@@ -43,6 +43,15 @@ func get_audio_bus(bus_name:String):
 	var volume = AudioServer.get_bus_volume_db(bus_id)
 	return {"mute":mute, "volume": volume}
 
+func has(property:String) -> bool:
+	if property in kit_settings:
+		return ProjectSettings.has_setting(kit_settings[property])
+	
+	if property in godot_settings:
+		return ProjectSettings.has_setting(godot_settings[property])
+	
+	return false
+
 func _set(property:String, value) -> bool:
 	if property in kit_settings:
 		ProjectSettings.set_setting(kit_settings[property], value)
