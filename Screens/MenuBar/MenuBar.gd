@@ -9,7 +9,8 @@ func _ready():
 	_show_menu("main_menu", Rakugo.started)
 
 func disable_continue_button():
-	if not File.new().file_exists(Rakugo.store_manager.get_save_path("auto")):
+	var auto_save_path : String = Rakugo.store_manager.save_folder_path + "/auto.json"
+	if not File.new().file_exists(auto_save_path):
 		for n in get_tree().get_nodes_in_group("nav_button_continue"):
 			n.disabled = true
 
