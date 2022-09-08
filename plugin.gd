@@ -23,6 +23,9 @@ func _enter_tree():
 	if !ProjectSettings.has_setting("addons/kit/saves/layout"):
 		ProjectSettings.set_setting("addons/kit/saves/layout", "pages")
 
+	if ProjectSettings.has_setting("display/window/size/maximized"):
+		ProjectSettings.set_setting("display/window/size/maximized", false)
+
 	ProjectSettings.add_property_info(
 		{
 			"name": "addons/kit/saves/layout",
@@ -53,3 +56,4 @@ func _exit_tree():
 	ProjectSettings.set_setting("addons/kit/saves/layout", null)
 	ProjectSettings.set_setting("addons/kit/saves/current_scroll", null)
 	ProjectSettings.set_setting("addons/kit/saves/skip_naming", null)
+	ProjectSettings.set_setting("display/window/size/maximized", null)
