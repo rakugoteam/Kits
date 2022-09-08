@@ -4,7 +4,7 @@ extends EditorPlugin
 
 func _enter_tree():
 	add_autoload_singleton("Kit", "res://addons/vnkit/kit.gd")
-	add_autoload_singleton("Window", "res://addons/vnkit/ui/Window/Window.tscn")
+	add_autoload_singleton("Window", "res://addons/vnkit/Window/Window.tscn")
 	if !ProjectSettings.has_setting("addons/kit/auto_mode_delay"):
 		ProjectSettings.set_setting("addons/kit/auto_mode_delay", 3)
 
