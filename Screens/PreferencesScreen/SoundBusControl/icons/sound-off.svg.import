@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sound-off.svg-f43fd8c7714c6206e752972afc24bccd.stex"
+path="res://.import/sound-off.svg-add47dcf663a260da99cf57a7704edf8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/vnkit/Screens/PreferencesScreen/SoundBusControl/icons/sound-off.svg"
-dest_files=[ "res://.import/sound-off.svg-f43fd8c7714c6206e752972afc24bccd.stex" ]
+source_file="res://addons/adventure-kit/Screens/PreferencesScreen/SoundBusControl/icons/sound-off.svg"
+dest_files=[ "res://.import/sound-off.svg-add47dcf663a260da99cf57a7704edf8.stex" ]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://addons/vnkit/Screens/HistoryScreen/HistoryItem.gd" type="Script" id=1]
+[ext_resource path="res://addons/adventure-kit/Screens/HistoryScreen/HistoryItem.gd" type="Script" id=1]
 [ext_resource path="res://addons/advanced-text/nodes/AdvancedTextLabel.gd" type="Script" id=7]
-[ext_resource path="res://addons/vnkit/themes/flat_drak_theme.tres" type="Theme" id=8]
+[ext_resource path="res://addons/adventure-kit/themes/flat_drak_theme.tres" type="Theme" id=8]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H3.tres" type="DynamicFont" id=9]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H1.tres" type="DynamicFont" id=10]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H2.tres" type="DynamicFont" id=11]

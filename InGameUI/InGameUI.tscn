@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/advanced-text/nodes/AdvancedTextLabel.gd" type="Script" id=1]
-[ext_resource path="res://addons/vnkit/InGameUI/Notification.gd" type="Script" id=2]
-[ext_resource path="res://addons/vnkit/InGameUI/DialogueUI/MenuContainer.gd" type="Script" id=3]
-[ext_resource path="res://addons/vnkit/themes/flat_drak_theme.tres" type="Theme" id=4]
-[ext_resource path="res://addons/vnkit/InGameUI/DialogueUI/DialogueUI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/vnkit/InGameUI/QuickMenu/QuickMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/vnkit/InGameUI/DialogueUI/ChoiceButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/adventure-kit/InGameUI/Notification.gd" type="Script" id=2]
+[ext_resource path="res://addons/adventure-kit/InGameUI/MenuContainer.gd" type="Script" id=3]
+[ext_resource path="res://addons/adventure-kit/themes/flat_drak_theme.tres" type="Theme" id=4]
+[ext_resource path="res://addons/advanced-text/examples/AdvancedTextButton/AdvancedTextButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/advanced-text/examples/AdvancedTextLabel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/adventure-kit/InGameUI/ChoiceButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/adventure-kit/InGameUI/AskPopup.gd" type="Script" id=9]
 
 [node name="InGameUI" type="Control"]
 anchor_right = 1.0
@@ -50,22 +51,18 @@ __meta__ = {
 }
 markup_text = "Notification"
 
-[node name="DialogueUI" type="Control" parent="."]
+[node name="MenuPanel" type="Panel" parent="."]
+visible = false
+anchor_top = 0.765
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -3.05176e-05
 
-[node name="DialogueUI" parent="DialogueUI" instance=ExtResource( 5 )]
-
-[node name="MenuContainer" type="ScrollContainer" parent="DialogueUI"]
-anchor_left = 0.119
-anchor_top = 0.067
-anchor_right = 0.9
-anchor_bottom = 0.733
-margin_left = 0.143997
-margin_top = -0.200001
-margin_right = 0.399963
-margin_bottom = 0.199982
-rect_min_size = Vector2( 800, 400 )
+[node name="MenuContainer" type="ScrollContainer" parent="MenuPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 2.0
+rect_min_size = Vector2( 1024, 100 )
 rect_clip_content = false
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -76,14 +73,64 @@ __meta__ = {
 }
 choice_button_scene = ExtResource( 8 )
 
-[node name="ChoicesBox" type="VBoxContainer" parent="DialogueUI/MenuContainer"]
-margin_right = 800.0
-margin_bottom = 400.0
+[node name="ChoicesBox" type="VBoxContainer" parent="MenuPanel/MenuContainer"]
+margin_right = 1024.0
+margin_bottom = 300.0
 rect_min_size = Vector2( 500, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 1
 
-[node name="QuickMenu" parent="." instance=ExtResource( 7 )]
-margin_top = 436.0
-margin_bottom = 488.0
+[node name="ChoiceButton" parent="MenuPanel/MenuContainer/ChoicesBox" instance=ExtResource( 8 )]
+margin_top = 0.0
+margin_right = 1012.0
+margin_bottom = 50.0
+
+[node name="AskPopup" type="Popup" parent="."]
+anchor_left = 0.468
+anchor_top = 0.443
+anchor_right = 0.684
+anchor_bottom = 0.732
+margin_left = -79.232
+margin_top = -97.8
+margin_right = -76.416
+margin_bottom = -98.2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="AskPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AskPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="AdvancedTextLabel" parent="AskPopup/VBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 224.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="AskPopup/VBoxContainer"]
+margin_top = 107.0
+margin_right = 224.0
+margin_bottom = 145.0
+size_flags_horizontal = 3
+
+[node name="AcceptButton" parent="AskPopup/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 149.0
+margin_right = 224.0
+margin_bottom = 173.0
+
+[node name="AdvancedTextLabel" parent="AskPopup/VBoxContainer/AcceptButton" index="0"]
+bbcode_text = "[center][b]Accept[/b] [font=res://addons/material-design-icons/fonts/32.tres]󰡕[/font][/center]"
+text = "Accept 󰡕"
+markup_text = "[center]**Accept** [icon=check-outline, 32][/center]"
+
+[editable path="AskPopup/VBoxContainer/AcceptButton"]

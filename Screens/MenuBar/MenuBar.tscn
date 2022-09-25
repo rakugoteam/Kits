@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/MenuBar.gd" type="Script" id=1]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/SubMenu.gd" type="Script" id=4]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/MainMenu.gd" type="Script" id=5]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/NavMenuButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/menu_buttons.tres" type="ButtonGroup" id=7]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/MenuBar.gd" type="Script" id=1]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/SubMenu.gd" type="Script" id=4]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/NavMenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/menu_buttons.tres" type="ButtonGroup" id=7]
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 40.0

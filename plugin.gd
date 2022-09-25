@@ -4,7 +4,7 @@ extends EditorPlugin
 
 func _enter_tree():
 	add_autoload_singleton("Kit", "res://addons/adventure-kit/kit.gd")
-	add_autoload_singleton("Window", "res://addons/adventure-kit/ui/Window/Window.tscn")
+	add_autoload_singleton("Window", "res://addons/adventure-kit/Window/Window.tscn")
 	if !ProjectSettings.has_setting("addons/kit/auto_mode_delay"):
 		ProjectSettings.set_setting("addons/kit/auto_mode_delay", 3)
 
@@ -23,7 +23,7 @@ func _enter_tree():
 	if !ProjectSettings.has_setting("addons/kit/saves/layout"):
 		ProjectSettings.set_setting("addons/kit/saves/layout", "pages")
 
-	if ProjectSettings.has_setting("display/window/size/maximized"):
+	if !ProjectSettings.has_setting("display/window/size/maximized"):
 		ProjectSettings.set_setting("display/window/size/maximized", false)
 
 	ProjectSettings.add_property_info(

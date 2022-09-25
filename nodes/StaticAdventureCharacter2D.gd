@@ -17,7 +17,7 @@ func _ready():
 	dialog_panel.character_tag = character_tag
 	dialog_panel.character_text_color = character_text_color
 
-	if !Rakugo.has_character(character_tag):
+	if !Rakugo.character_exists(character_tag):
 		Rakugo.define_character(character_tag, character_name)
 		Rakugo.set_character_variable(character_tag, "text_color", character_text_color)
 	

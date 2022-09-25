@@ -1,3 +1,4 @@
+tool
 # Kit
 extends Node
 
@@ -28,9 +29,6 @@ var audio_bus := [
 
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
-	var f :=  File.new()
-	if f.file_exists("user://kit_config.cfg"):
-		load_conf()
 
 func set_audio_bus(bus_name:String, volume:float, mute := false):
 	var bus_id = AudioServer.get_bus_index(bus_name)
@@ -77,49 +75,3 @@ func _get(property : String):
 		return ProjectSettings.get_setting(godot_settings[property])
 	
 	return null
-
-func save_conf() -> void:
-	var config := ConfigFile.new()
-
-	# for setting in kit_settings:
-	# 	var value = ProjectSettings.get(kit_settings[setting])
-	# 	config.set_value("kit", setting, value)
-
-	for setting in godot_settings:
-		var value = ProjectSettings.get(godot_settings[setting])
-		config.set_value("godot", setting, value) 
-
-	for bus_name in audio_bus:
-		var bus = get_audio_bus(bus_name)
-		set_audio_bus(bus_name, bus.volume, bus.mute)
-		config.set_value("audio/" + bus_name, "volume", bus.volume)
-		config.set_value("audio/" + bus_name, "mute", bus.mute)
-
-	config.save("user://kit_config.cfg")
-
-func load_conf() -> int:
-	var config = ConfigFile.new()
-	var error = config.load("user://kit_config.cfg")
-
-	if error != OK:
-		prints("Error loading config file:", error)
-		return error
-	
-	# for setting in kit_settings:
-	# 	var value = config.get_value("kit", setting)
-	# 	if value != null:
-	# 		ProjectSettings.set_setting(kit_settings[setting], value)
-			
-	for setting in godot_settings:
-		var value = config.get_value("godot", setting)
-		if value != null:
-			ProjectSettings.set_setting(godot_settings[setting], value)
-			
-	for bus_name in audio_bus:
-		var bus = get_audio_bus(bus_name)
-		var volume = config.get_value("audio/" + bus_name, "volume")
-		var mute = config.get_value("audio/" + bus_name, "mute")
-		if volume != null:
-			set_audio_bus(bus_name, volume, mute)
-
-	return error

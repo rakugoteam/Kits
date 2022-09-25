@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/material-design-icons/fonts/48.tres" type="DynamicFont" id=1]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/SlotButton.gd" type="Script" id=2]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/ScreenshotRect.gd" type="Script" id=3]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/Slot.gd" type="Script" id=4]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/SaveNameLabel.gd" type="Script" id=6]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/DeleteButton.gd" type="Script" id=7]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/SlotButton.gd" type="Script" id=2]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/ScreenshotRect.gd" type="Script" id=3]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/Slot.gd" type="Script" id=4]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/SaveNameLabel.gd" type="Script" id=6]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/DeleteButton.gd" type="Script" id=7]
 [ext_resource path="res://addons/material-design-icons/nodes/MaterialButton.gd" type="Script" id=8]
 [ext_resource path="res://addons/material-design-icons/fonts/32.tres" type="DynamicFont" id=9]
 

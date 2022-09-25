@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://addons/vnkit/Window/Window.gd" type="Script" id=1]
-[ext_resource path="res://addons/vnkit/InGameUI/InGameUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/vnkit/Screens/Screens.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/vnkit/Window/Loading.gd" type="Script" id=7]
-[ext_resource path="res://addons/vnkit/Window/LoadingProgressBar.gd" type="Script" id=8]
-[ext_resource path="res://addons/vnkit/QuitScreen/QuitScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/adventure-kit/Window/Window.gd" type="Script" id=1]
+[ext_resource path="res://addons/adventure-kit/InGameUI/InGameUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/adventure-kit/Screens/Screens.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/adventure-kit/Window/Loading.gd" type="Script" id=7]
+[ext_resource path="res://addons/adventure-kit/Window/LoadingProgressBar.gd" type="Script" id=8]
+[ext_resource path="res://addons/adventure-kit/QuitScreen/QuitScreen.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 

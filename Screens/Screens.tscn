@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://addons/vnkit/Screens/Screens.gd" type="Script" id=2]
-[ext_resource path="res://addons/vnkit/Screens/TitleScreen/TitleScreen.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/vnkit/Screens/MainMenuReturnConfirm.gd" type="Script" id=4]
-[ext_resource path="res://addons/vnkit/Screens/AboutScreen/AboutScreen.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/vnkit/Screens/MainMenuReturnConfirmPanel.gd" type="Script" id=6]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/vnkit/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
-[ext_resource path="res://addons/vnkit/Screens/PreferencesScreen/PreferencesScreen.tscn" type="PackedScene" id=12]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/MenuBar.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/adventure-kit/Screens/Screens.gd" type="Script" id=2]
+[ext_resource path="res://addons/adventure-kit/Screens/TitleScreen/TitleScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/adventure-kit/Screens/MainMenuReturnConfirm.gd" type="Script" id=4]
+[ext_resource path="res://addons/adventure-kit/Screens/AboutScreen/AboutScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/adventure-kit/Screens/MainMenuReturnConfirmPanel.gd" type="Script" id=6]
+[ext_resource path="res://addons/adventure-kit/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://addons/adventure-kit/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://addons/adventure-kit/Screens/PreferencesScreen/PreferencesScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/adventure-kit/Screens/MenuBar/MenuBar.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
