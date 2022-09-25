@@ -1,8 +1,8 @@
 extends Polygon2D
 class_name Region2D, "res://addons/adventure-kit/icons/flashlight.svg"
 
-export var disabled: bool setget _set_disabled, _get_disabled
-export var pressed: bool setget _set_pressed, _get_pressed
+export var disabled: bool setget _set_disabled
+export var pressed: bool setget _set_pressed
 
 var _pressed := false
 var _disabled := false
@@ -16,27 +16,15 @@ signal highlighted(is_highlighted)
 signal disabled_changed(is_disabled)
 signal pressed
 
-
 func _set_disabled(value: bool) -> void:
 	_disabled = value
 	set_process(!value)
 	set_process_input(!value)
 
-
-func _get_disabled() -> bool:
-	emit_signal("disabled_changed", _disabled)
-	return _disabled
-
-
 func _set_pressed(value: bool) -> void:
 	_pressed = value
 	if _pressed:
 		emit_signal("pressed")
-
-
-func _get_pressed() -> bool:
-	return _pressed
-
 
 func _process(delta):
 	var mouse_position = get_local_mouse_position()
@@ -49,7 +37,6 @@ func _process(delta):
 	elif was_mouse_in:
 		emit_signal("mouse_exited")
 		was_mouse_in = false
-
 
 func _input(event: InputEvent) -> void:
 	if is_mouse_in:
