@@ -26,6 +26,8 @@ var audio_bus := [
 	"Dialogs"
 ]
 
+var saves_ui_scroll
+
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
 	var f :=  File.new()

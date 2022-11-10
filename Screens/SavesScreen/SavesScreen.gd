@@ -18,6 +18,7 @@ var save_list:Array = []
 var save_pages:Dictionary = {}
 
 var use_pages:bool = false
+var update_in_progress:bool = false
 
 signal load_file
 signal mode_changed(save_mode)
@@ -86,6 +87,7 @@ func update_save_list(ignores = [""]):
 	return contents
 	
 func update_grid(_save_mode = null):
+	print("update_grid")
 	if _save_mode != null:
 		save_mode = _save_mode
 
@@ -104,13 +106,14 @@ func update_grid(_save_mode = null):
 		populate_grid(saves)
 		print("Displaying saves as list")
 	
-	
+	update_in_progress = false
+
 func populate_grid(saves):
 	emit_signal("clear_save_slots")
 	
 	for save in saves:
-		emit_signal("add_save_slot", new_slot_instance(save, Vector2.ZERO, save in ["empty", "auto"]))
-		
+		emit_signal("add_save_slot", new_slot_instance(save, Vector2.ZERO, save in ["empty", "auto"], save == "empty"))
+
 func populate_grid_page():
 	emit_signal("clear_save_slots")
 	
@@ -120,24 +123,22 @@ func populate_grid_page():
 		var index = Vector2(current_page, i)
 		
 		if save_pages.has(index):
-			saves.append(new_slot_instance(save_pages[index], index, false))
+			saves.append(new_slot_instance(save_pages[index], index))
 			prints("found save page:", index, save_pages[index])
 			continue
 
 		if save_mode:
-			saves.append(new_slot_instance("empty", index, true))
+			saves.append(new_slot_instance("empty", index, true, true))
 			prints("creating empty save slot:", index)
 			continue
-		
-		# saves.append(dummy_slot.instance())
 	
 	for x in saves:
 		emit_signal("add_save_slot", x)
 		$SavePage/ScrollContainer/GridContainer.add_child(x)
 
-func new_slot_instance(filename: String, page_index:Vector2, hide_dl_btn:bool) -> Node:
+func new_slot_instance(filename: String, page_index:Vector2, hide_dl_btn:=false, empty:=false) -> Node:
 	var s = slot.instance()
-	s.init(filename, page_index, hide_dl_btn)
+	s.init(filename, page_index, hide_dl_btn, empty)
 	s.connect("select_save", self, "_on_save_select")
 
 	if not hide_dl_btn:
@@ -282,13 +283,15 @@ func load_save(caller: String) -> void:
 		Window.select_ui_tab(1)
 
 func _on_visibility_changed():
-	if !visible:
+	if !visible or update_in_progress:
 		return
-
+	
+	update_in_progress = true
 	if use_pages:
 		var page = Kit.saves_ui_page
 		_on_change_page(page, 0)
-
+	
+	print("visible")
 	update_grid()
 
 
