@@ -37,7 +37,7 @@ func get_save_name(name:String, page_index:Vector2) -> String:
 func init(name:String, page_index:Vector2, hide_delete:bool = false, empty:bool = false):
 	if empty:
 		save_name = name
-		
+
 	else:
 		save_name = get_save_name(name, page_index)
 
@@ -84,7 +84,7 @@ func load_screenshot_texture(path):
 
 func _on_save_select():
 	emit_signal("select_save", save_name, save_page_index)
-	print("select save", save_name, save_page_index)
+	prints("select save", save_name, save_page_index)
 	
 func _on_save_delete():
 	if save_page_index:
