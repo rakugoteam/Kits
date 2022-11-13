@@ -118,6 +118,4 @@ __meta__ = {
 [connection signal="set_save_name" from="." to="Button/VBoxContainer/SaveNameLabel" method="_on_set_save_name"]
 [connection signal="set_screenshot" from="." to="Button/VBoxContainer/Panel/ScreenshotRect" method="_on_set_screenshot"]
 [connection signal="pressed" from="Button" to="." method="_on_save_select"]
-[connection signal="resized" from="Button/VBoxContainer/Panel" to="Button" method="_on_screenshot_panel_resized"]
-[connection signal="visibility_changed" from="Button/VBoxContainer/Panel" to="Button" method="_on_screenshot_panel_visibility_changed"]
 [connection signal="pressed" from="Button/VBoxContainer/Panel/ScreenshotRect/Delete" to="." method="_on_save_delete"]
