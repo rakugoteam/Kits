@@ -1,6 +1,6 @@
 extends Panel
 
-export var slot: PackedScene
+export var slot:PackedScene
 export var popup_path:NodePath = 'ConfirmationPopup'
 export var default_save_name := "save"
 
@@ -33,7 +33,8 @@ func _ready() -> void:
 		e.scroll_vertical_enabled = not use_pages
 		
 	if use_pages:
-		Kit.saves_ui_page = 1
+		Kit.saves_ui_page = 0
+
 	return
 
 func set_mode(mode):
@@ -189,6 +190,7 @@ func save_save(caller: String) -> bool:
 	if caller == "empty":
 		if Kit.saves_ui_skip_naming:
 			caller = get_next_iterative_name(default_save_name)
+
 		else:
 			new_save = true
 			popup.name_save_confirm()
@@ -236,7 +238,7 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 	else:
 		popup.name_save_confirm()
 		var chosen_name = yield(popup, "return_output")
-		if not chosen_name is String:#explicit check needed as "" doesn't count as true
+		if not chosen_name is String:# explicit check needed as "" doesn't count as true
 			return false
 		
 		caller = chosen_name
