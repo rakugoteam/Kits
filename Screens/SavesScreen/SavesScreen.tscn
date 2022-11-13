@@ -72,11 +72,13 @@ margin_left = 0.0400009
 margin_top = -111.0
 margin_right = -0.039978
 margin_bottom = 11.0
+mouse_filter = 1
 custom_styles/panel = SubResource( 5 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SavePage" groups=["save_screen_scroll_ui_element"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
@@ -102,9 +104,6 @@ anchor_bottom = 0.95
 custom_constants/separation = 20
 alignment = 1
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PreviousPage" type="Button" parent="PageNavBar"]
 margin_left = 64.0
@@ -113,8 +112,8 @@ margin_bottom = 42.0
 rect_min_size = Vector2( 0, 30 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/focus = SubResource( 6 )
+disabled = true
 text = "<"
-flat = true
 script = ExtResource( 12 )
 
 [node name="QuisavePage" type="Button" parent="PageNavBar"]
@@ -126,7 +125,6 @@ custom_styles/focus = SubResource( 8 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "Q"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page1" type="Button" parent="PageNavBar"]
@@ -139,7 +137,6 @@ toggle_mode = true
 pressed = true
 group = ExtResource( 7 )
 text = "1"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page2" type="Button" parent="PageNavBar"]
@@ -151,7 +148,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "2"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page3" type="Button" parent="PageNavBar"]
@@ -163,7 +159,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "3"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page4" type="Button" parent="PageNavBar"]
@@ -175,7 +170,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "4"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page5" type="Button" parent="PageNavBar"]
@@ -187,7 +181,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "5"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page6" type="Button" parent="PageNavBar"]
@@ -199,7 +192,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "6"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page7" type="Button" parent="PageNavBar"]
@@ -211,7 +203,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "7"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page8" type="Button" parent="PageNavBar"]
@@ -223,7 +214,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "8"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page9" type="Button" parent="PageNavBar"]
@@ -235,7 +225,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "9"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page10" type="Button" parent="PageNavBar"]
@@ -247,7 +236,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "10"
-flat = true
 script = ExtResource( 12 )
 
 [node name="Page11" type="Button" parent="PageNavBar"]
@@ -259,7 +247,6 @@ custom_styles/focus = SubResource( 6 )
 toggle_mode = true
 group = ExtResource( 7 )
 text = "11"
-flat = true
 script = ExtResource( 12 )
 
 [node name="NextPage" type="Button" parent="PageNavBar"]
@@ -270,7 +257,6 @@ rect_min_size = Vector2( 0, 30 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/focus = SubResource( 6 )
 text = ">"
-flat = true
 script = ExtResource( 12 )
 
 [node name="SkipNamingButton" type="CheckButton" parent="."]

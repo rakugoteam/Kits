@@ -82,86 +82,96 @@ __meta__ = {
 }
 
 [node name="Start" parent="NavList" groups=["nav_button", "nav_button_main_menu"] instance=ExtResource( 6 )]
-margin_top = 176.0
+margin_top = 156.0
 margin_right = 984.0
-margin_bottom = 190.0
+margin_bottom = 174.0
 text = "Start"
+flat = false
 nav_action = "start"
 
 [node name="Continue" parent="NavList" groups=["nav_button", "nav_button_continue", "nav_button_main_menu"] instance=ExtResource( 6 )]
-margin_top = 202.0
+margin_top = 186.0
 margin_right = 984.0
-margin_bottom = 216.0
+margin_bottom = 204.0
 disabled = true
 text = "Continue"
+flat = false
 nav_action = "continue"
 
 [node name="History" parent="NavList" groups=["nav_button", "nav_button_game"] instance=ExtResource( 6 )]
-margin_top = 228.0
+margin_top = 216.0
 margin_right = 984.0
-margin_bottom = 242.0
+margin_bottom = 234.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "History"
+flat = false
 nav_action = "history"
 
 [node name="Save" parent="NavList" groups=["nav_button", "nav_button_game"] instance=ExtResource( 6 )]
-margin_top = 254.0
+margin_top = 246.0
 margin_right = 984.0
-margin_bottom = 268.0
+margin_bottom = 264.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "Save"
+flat = false
 nav_action = "save"
 
 [node name="Load" parent="NavList" groups=["nav_button"] instance=ExtResource( 6 )]
-margin_top = 280.0
+margin_top = 276.0
 margin_right = 984.0
 margin_bottom = 294.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "Load"
+flat = false
 nav_action = "load"
 
 [node name="Preferences" parent="NavList" groups=["nav_button"] instance=ExtResource( 6 )]
 margin_top = 306.0
 margin_right = 984.0
-margin_bottom = 320.0
+margin_bottom = 324.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "Preferences"
+flat = false
 nav_action = "preferences"
 
 [node name="MainMenu" parent="NavList" groups=["nav_button", "nav_button_game"] instance=ExtResource( 6 )]
-margin_top = 332.0
+margin_top = 336.0
 margin_right = 984.0
-margin_bottom = 346.0
+margin_bottom = 354.0
 text = "Main Menu"
+flat = false
 nav_action = "main_menu"
 
 [node name="About" parent="NavList" groups=["nav_button"] instance=ExtResource( 6 )]
-margin_top = 358.0
+margin_top = 366.0
 margin_right = 984.0
-margin_bottom = 372.0
+margin_bottom = 384.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "About"
+flat = false
 nav_action = "about"
 
 [node name="Help" parent="NavList" groups=["nav_button"] instance=ExtResource( 6 )]
-margin_top = 384.0
+margin_top = 396.0
 margin_right = 984.0
-margin_bottom = 398.0
+margin_bottom = 414.0
 toggle_mode = true
 group = ExtResource( 7 )
 text = "Help"
+flat = false
 nav_action = "help"
 
 [node name="Quit" parent="NavList" groups=["nav_button"] instance=ExtResource( 6 )]
-margin_top = 410.0
+margin_top = 426.0
 margin_right = 984.0
-margin_bottom = 424.0
+margin_bottom = 444.0
 text = "Quit"
+flat = false
 nav_action = "quit"
 
 [node name="ReturnButton" parent="." groups=["nav_button"] instance=ExtResource( 6 )]
@@ -171,6 +181,7 @@ margin_left = 40.0
 margin_right = 133.0
 margin_bottom = 35.0
 text = "Return"
+flat = false
 nav_action = "return"
 
 [connection signal="show_menu" from="." to="SubMenu" method="_on_show_menu"]

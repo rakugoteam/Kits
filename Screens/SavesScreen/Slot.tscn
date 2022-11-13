@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-Bold.tres" type="DynamicFont" id=1]
-[ext_resource path="res://addons/vnkit/Screens/SavesScreen/SlotButton.gd" type="Script" id=2]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/ScreenshotRect.gd" type="Script" id=3]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/Slot.gd" type="Script" id=4]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
@@ -10,20 +9,6 @@
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/DeleteButton.gd" type="Script" id=9]
 [ext_resource path="res://addons/material-design-icons/fonts/16.tres" type="DynamicFont" id=10]
 
-[sub_resource type="StyleBoxLine" id=1]
-content_margin_left = 5.0
-color = Color( 0.756863, 0.878431, 1, 1 )
-grow_begin = 0.0
-grow_end = -42.0
-thickness = 5
-vertical = true
-
-[sub_resource type="StyleBoxEmpty" id=2]
-content_margin_left = 5.0
-content_margin_right = 5.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.376471, 0.505882, 0.631373, 1 )
 
@@ -31,6 +16,7 @@ bg_color = Color( 0.376471, 0.505882, 0.631373, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 200, 200 )
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
@@ -40,13 +26,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 2 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
-script = ExtResource( 2 )
-screenshot_panel_path = NodePath("VBoxContainer/Panel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Button"]
 anchor_right = 1.0
@@ -58,7 +37,7 @@ size_flags_vertical = 3
 margin_right = 1024.0
 margin_bottom = 577.0
 rect_pivot_offset = Vector2( -540, 29 )
-mouse_filter = 2
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 3 )
@@ -88,6 +67,7 @@ script = ExtResource( 9 )
 [node name="DummySlot" type="ColorRect" parent="Button/VBoxContainer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.168627, 0.709804, 0.737255, 1 )
@@ -95,6 +75,7 @@ color = Color( 0.168627, 0.709804, 0.737255, 1 )
 [node name="Save" type="Label" parent="Button/VBoxContainer/Panel/DummySlot"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 7 )
