@@ -219,7 +219,7 @@ func save_save(caller: String) -> bool:
 	if !screenshot:
 		return false
 
-	#screenshot.flip_y()
+	screenshot.flip_y()
 	var png_path = Rakugo.store_manager.save_folder_path.plus_file(caller) + '.png'
 	screenshot.save_png(png_path)
 
@@ -253,8 +253,8 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 
 	if !screenshot:
 		return false
-
-	#screenshot.flip_y()
+	
+	screenshot.flip_y()
 	var png_path = Rakugo.store_manager.save_folder_path.plus_file(caller)+ '.png'
 	screenshot.save_png(png_path)
 
@@ -293,6 +293,8 @@ func load_save(caller: String) -> void:
 func _on_visibility_changed():
 	if !visible:
 		return
+	
+	screenshot = get_viewport().get_texture().get_data()
 
 	if use_pages:
 		var page = Kit.saves_ui_page
