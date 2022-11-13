@@ -4,10 +4,10 @@ signal show_menu(menu, game_started)
 signal show_main_menu_confirm()
 
 func _ready():
-	# get_tree().paused = true
 	get_tree().set_auto_accept_quit(false)
 	Rakugo.connect("game_ended", self, "_on_game_end")
 	connect("visibility_changed", self, "_on_visibility_changed")
+	get_tree().paused = true
 
 func _on_nav_button_press(nav):
 	match nav:
