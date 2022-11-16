@@ -37,6 +37,9 @@ func _ready() -> void:
 
 	return
 
+func get_save_file_path(save_name:String, file_name:String) -> String:
+	return Rakugo.store_manager.save_folder_path.plus_file(save_name).plus_file(file_name)
+
 func set_mode(mode):
 	save_mode = mode
 	emit_signal("mode_changed", mode)
@@ -50,34 +53,24 @@ func update_save_pages():
 	for save in save_list:
 		var result = page_re.search(save)
 		if result:
-			var x = int(result.group(1))
-			var y = int(result.group(2))
+			var x = int(result.get_string(1))
+			var y = int(result.get_string(2))
 			save_pages[Vector2(x, y)] = result.get_string(3)
 			prints("found save page:", x, y, result.get_string(3))
 	pass
 
 func update_save_list(ignores = [""]):
 	var contents = []
-	if dir.open(Rakugo.store_manager.save_folder_path) == OK:
+	var save_folder = Rakugo.store_manager.save_folder_path
+	if dir.open(save_folder) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-
 		while file_name != "":
-			if !dir.current_is_dir():
-				if file_name.ends_with(file_ext):
-					var i = false
-
-					for ig in ignores:
-						if ig in file_name:
-							i = true
-							break
-
-					if not i:
-						contents.append(file_name.replace("." + file_ext, ""))
-				prints("found save:", file_name)
-
+			if dir.current_is_dir():
+				if dir.file_exists(file_name.plus_file("save.json")):
+					contents.append(file_name)
 			file_name = dir.get_next()
-
+		dir.list_dir_end()
 	else:
 		print("An error occurred when trying to access the path.")
 
@@ -157,14 +150,12 @@ func _on_delete_save(save_filename):
 	if not yield(popup, "return_output"):
 		return false
 
-	var path = Rakugo.store_manager.save_folder_path.plus_file(save_filename)
-
-	var png_path = path + ".png"
+	var png_path = get_save_file_path(save_filename, "screenshot.png")
 	if file.file_exists(png_path):
 		Rakugo.debug("remove image")
 		dir.remove(png_path)
 
-	var save_path = path + ".res"
+	var save_path = get_save_file_path(save_filename, "save."+file_ext)
 	if file.file_exists(save_path):
 		Rakugo.debug("remove save")
 		dir.remove(save_path)
@@ -218,13 +209,13 @@ func save_save(caller: String) -> bool:
 
 	if !screenshot:
 		return false
-
-	screenshot.flip_y()
-	var png_path = Rakugo.store_manager.save_folder_path.plus_file(caller) + '.png'
+	
+	# first save the save, so it will create the save dir
+	Rakugo.save_game(caller)
+	var png_path = get_save_file_path(caller, "screenshot.png")
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.save_game(caller)
 
 	update_grid()
 	return true
@@ -254,12 +245,13 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 	if !screenshot:
 		return false
 	
-	screenshot.flip_y()
-	var png_path = Rakugo.store_manager.save_folder_path.plus_file(caller)+ '.png'
+	# first save the save, so it will create the save dir
+	Rakugo.save_game(caller)
+	var png_path = get_save_file_path(caller, "screenshot.png")
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.save_game(caller)
+	
 
 	update_grid()
 	#get_parent().in_game()
@@ -295,6 +287,7 @@ func _on_visibility_changed():
 		return
 	
 	screenshot = get_viewport().get_texture().get_data()
+	screenshot.flip_y()
 
 	if use_pages:
 		var page = Kit.saves_ui_page

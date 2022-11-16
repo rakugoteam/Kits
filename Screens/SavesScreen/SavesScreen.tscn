@@ -86,7 +86,6 @@ scroll_vertical_enabled = false
 script = ExtResource( 4 )
 
 [node name="GridContainer" type="GridContainer" parent="SavePage/ScrollContainer"]
-margin_right = 942.0
 size_flags_horizontal = 3
 custom_constants/vseparation = 50
 custom_constants/hseparation = 7
