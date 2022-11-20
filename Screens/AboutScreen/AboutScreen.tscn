@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/advanced-text/nodes/AdvancedTextLabel.gd" type="Script" id=1]
-[ext_resource path="res://addons/vnkit/fonts/AdvancedTextTheme.tres" type="Theme" id=3]
 
 [node name="AboutScreen" type="Panel"]
 anchor_right = 1.0
@@ -22,7 +21,7 @@ margin_bottom = 600.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 3 )
+
 bbcode_enabled = true
 bbcode_text = "[b]My Awesome Game[/b]
 [i]version 0.1[/i]

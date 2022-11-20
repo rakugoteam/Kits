@@ -2,7 +2,6 @@
 
 [ext_resource path="res://addons/vnkit/Screens/HistoryScreen/HistoryItem.gd" type="Script" id=1]
 [ext_resource path="res://addons/advanced-text/nodes/AdvancedTextLabel.gd" type="Script" id=7]
-[ext_resource path="res://addons/vnkit/themes/flat_drak_theme.tres" type="Theme" id=8]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H3.tres" type="DynamicFont" id=9]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H1.tres" type="DynamicFont" id=10]
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-H2.tres" type="DynamicFont" id=11]
@@ -16,7 +15,6 @@ bg_color = Color( 1, 1, 1, 0.121569 )
 
 [node name="HistoryItem" type="PanelContainer"]
 anchor_right = 1.0
-theme = ExtResource( 8 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 

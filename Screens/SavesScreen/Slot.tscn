@@ -35,7 +35,7 @@ size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Button/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 577.0
+margin_bottom = 569.0
 rect_pivot_offset = Vector2( -540, 29 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -102,7 +102,7 @@ __meta__ = {
 }
 
 [node name="SaveNameLabel" type="Label" parent="Button/VBoxContainer"]
-margin_top = 581.0
+margin_top = 573.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 1
