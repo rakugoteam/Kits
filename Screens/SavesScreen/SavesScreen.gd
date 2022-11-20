@@ -296,7 +296,6 @@ func _on_visibility_changed():
 	print("visible")
 	update_grid()
 
-
 func _on_change_page(page, incremental_change):
 	match page:
 		-1:

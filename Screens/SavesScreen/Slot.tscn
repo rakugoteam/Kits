@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/advanced-text/font/DejaVuSans-Bold.tres" type="DynamicFont" id=1]
+[ext_resource path="res://addons/material-design-icons/fonts/48.tres" type="DynamicFont" id=2]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/ScreenshotRect.gd" type="Script" id=3]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/Slot.gd" type="Script" id=4]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
 [ext_resource path="res://addons/material-design-icons/nodes/MaterialIcon.gd" type="Script" id=6]
 [ext_resource path="res://addons/material-design-icons/fonts/128.tres" type="DynamicFont" id=7]
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/DeleteButton.gd" type="Script" id=9]
-[ext_resource path="res://addons/material-design-icons/fonts/16.tres" type="DynamicFont" id=10]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.376471, 0.505882, 0.631373, 1 )
@@ -35,7 +35,7 @@ size_flags_vertical = 3
 
 [node name="Panel" type="Panel" parent="Button/VBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 569.0
+margin_bottom = 538.0
 rect_pivot_offset = Vector2( -540, 29 )
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -59,10 +59,15 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -132.0
 margin_bottom = 132.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 2 )
 disabled = true
-text = "󰥶"
+text = "󰧧"
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+icon_name = "delete-outline"
+icon_size = "48"
 
 [node name="DummySlot" type="ColorRect" parent="Button/VBoxContainer/Panel"]
 anchor_right = 1.0
@@ -73,8 +78,14 @@ size_flags_vertical = 3
 color = Color( 0.168627, 0.709804, 0.737255, 1 )
 
 [node name="Save" type="Label" parent="Button/VBoxContainer/Panel/DummySlot"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -269.0
+margin_right = 512.0
+margin_bottom = 269.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -87,15 +98,15 @@ icon_name = "content-save-edit-outline"
 icon_size = "128"
 
 [node name="DateLabel" type="Label" parent="Button/VBoxContainer"]
-visible = false
-margin_top = 568.0
+margin_top = 542.0
 margin_right = 1024.0
-margin_bottom = 582.0
+margin_bottom = 569.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Wednesday, September 30 2020, 00:00"
 align = 1
+autowrap = true
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,7 +121,7 @@ custom_colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Empty"
 align = 1
-clip_text = true
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
