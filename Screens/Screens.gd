@@ -99,12 +99,5 @@ func _input(event):
 		if event.is_action_pressed("ui_cancel"):
 			_on_nav_button_press("return")
 
-func _on_SavesSlotScreen_mode_changed(save_mode):
-	if save_mode:
-		emit_signal("show_menu", "save", Rakugo.started)
-	else:
-		emit_signal("show_menu", "load", Rakugo.started)
-	
 func _on_visibility_changed():
 	get_tree().paused = visible
-		

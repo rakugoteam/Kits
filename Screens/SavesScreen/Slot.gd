@@ -13,7 +13,6 @@ var save_page_index: Vector2 = Vector2.ZERO
 var screenshot: ImageTexture = null
 var file_name: String = ""
 
-
 func get_save_name(name: String, page_index: Vector2) -> String:
 	var page_index_str := "%s_%s" % [page_index.x, page_index.y]
 	var save_dir = Rakugo.store_manager.save_folder_path.plus_file(page_index_str)
@@ -34,7 +33,6 @@ func get_save_name(name: String, page_index: Vector2) -> String:
 		push_error("Can't open save folder")
 
 	return name
-
 
 func init(name: String, page_index: Vector2, hide_delete: bool = false, empty: bool = false):
 	if empty:
@@ -70,7 +68,6 @@ func init(name: String, page_index: Vector2, hide_delete: bool = false, empty: b
 
 	set_data_time(mod_time)
 
-
 func load_screenshot_texture(path):
 	var image_file = File.new()
 	image_file.open(path, File.READ)
@@ -85,11 +82,9 @@ func load_screenshot_texture(path):
 	output.create_from_image(image)
 	return output
 
-
 func _on_save_select():
 	emit_signal("select_save", save_name, save_page_index)
 	prints("select save", save_name, save_page_index)
-
 
 func _on_save_delete():
 	if save_page_index:
@@ -99,11 +94,9 @@ func _on_save_delete():
 	else:
 		emit_signal("delete_save", save_name)
 
-
 func set_screenshot(texture):
 	self.screenshot = texture
 	$Button/VBoxContainer/Panel/ScreenshotRect.texture = texture
-
 
 func set_data_time(data_time: int):
 	if data_time == 0:
@@ -113,10 +106,8 @@ func set_data_time(data_time: int):
 	var time_str := Time.get_time_string_from_unix_time(data_time)
 	$Button/VBoxContainer/DateLabel.text = "%s %s" % [date_str, time_str]
 
-
 func set_save_name(save_name: String):
 	$Button/VBoxContainer/SaveNameLabel.text = save_name
-
 
 func hide_delete_button():
 	emit_signal("set_delete_button", false)
