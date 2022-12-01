@@ -5,13 +5,13 @@ signal nav_button_press(nav_action)
 
 func _ready():
 	connect_buttons()
-	disable_continue_button()
 	_show_menu("main_menu", Rakugo.started)
 
 func disable_continue_button():
-	var auto_save_path : String = Rakugo.store_manager.save_folder_path + "/auto.json"
+	var auto_save_path : String = Rakugo.store_manager.\
+		save_folder_path.plus_file("auto").plus_file("save.json")
 	if not File.new().file_exists(auto_save_path):
-		for n in get_tree().get_nodes_in_group("nav_button_continue"):
+		for n in get_tree().get_nodes_in_group("continue"):
 			n.disabled = true
 
 func _show_menu(menu, game_started):

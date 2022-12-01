@@ -10,22 +10,19 @@ var menu_names:Dictionary = {
 }
 
 func _on_show_menu(menu, game_started):
-	if not menu in menu_names:
-		visible = false
-		return
-
-	visible = true
-	$"../ReturnButton".visible = true
-
+	prints("opening menu:", menu, "game_started:", game_started)
 	for nb in get_tree().get_nodes_in_group("nav_button"):
-		if nb.text == menu_names[menu]:
-			nb.pressed = true
+		$CurrentSubMenu.visible = menu in menu_names
+		if menu in menu_names:
+			if nb.text == menu_names[menu]:
+				$CurrentSubMenu.text = menu_names[menu]
+				nb.pressed = true
 
-		if "nav_button_main_menu" in nb.get_groups():
-			nb.visible = not game_started
+		if "main_menu" in nb.get_groups():
+			nb.visible = !game_started
+			prints("show", nb.name, "because game not started")
 
-		if "nav_button_game" in nb.get_groups():
+		if "pause_menu" in nb.get_groups():
 			nb.visible = game_started
+			prints("hide", nb.name, "because game is started")
 
-
-	$CurrentSubMenu.text = menu_names[menu]
