@@ -7,7 +7,7 @@ func _ready() -> void:
 	Rakugo.connect("say", self, "_on_say")
 	Rakugo.connect("ask", self, "_on_ask")
 	Rakugo.connect("step", self, "_on_step")
-	answer_edit.connect("text_entered", self, "_on_answer_entered")
+	answer_edit.connect("text_entered", self, "_on_ask_entered")
 
 func _on_say(character:Dictionary, text:String) -> void:
 	show()
