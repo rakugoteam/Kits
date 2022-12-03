@@ -1,14 +1,23 @@
 extends PanelContainer
 
-onready var ch_name := $VBoxContainer/CharacterName
-onready var text := $VBoxContainer/Text
+onready var label := $DialogLabel
+
+func setup(history_item:Dictionary) -> void:
+	var type = history_item["type"]
+	if type in ["say", "ask"]:
+		var character = history_item["character"] 
+		if character.empty():
+			character = Rakugo.get_narrator()
+		
+		var ch_name = character.get("name", "null")
+		var text = history_item["text"]
+		label.markup_text = "# %s \n%s" % [ch_name, text]
+
+	if type == "ask":
+		label.markup_text += "\n*Answer:* `%s`" % history_item["answer"]
+	
+	if type == "menu":
+		label.markup_text += "\n*Chosen: %s" % history_item["text"]
 
 
-func init(entry):
-	if entry.character_tag and Rakugo.store.get(entry.character_tag):
-		ch_name.markup_text = Rakugo.store.get(entry.character_tag)
-	else:
-		 ch_name.markup_text = Rakugo.Say.get_narrator()
-	if not ch_name.markup_text:
-		ch_name.markup_text.visible = false
-	text.markup_text = entry.text
+

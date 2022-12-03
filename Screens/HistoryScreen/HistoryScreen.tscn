@@ -24,11 +24,11 @@ __meta__ = {
 }
 
 [node name="History" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1024.0
-margin_bottom = 576.0
+margin_right = 819.2
+margin_bottom = 480.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 alignment = 1
 script = ExtResource( 3 )
-HistoryItemTemplate = ExtResource( 2 )
+HistoryItem = ExtResource( 2 )
