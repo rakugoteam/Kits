@@ -1,7 +1,26 @@
 extends Control
 
-signal show_menu(menu, game_started)
 signal show_main_menu_confirm()
+
+const page_action_index:= {
+	'history':2,
+	'save':4,
+	'load':4,
+	'preferences':3,
+	'main_menu':0,
+	'about':1,
+	'help':1,
+	'return':0,
+}
+
+const buttons:= {
+	'history':'%History',
+	'save':'%Save',
+	'load':'%Load',
+	'preferences':'%Preferences',
+	'about':'%About',
+	'help':'%Help',
+}
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
@@ -9,8 +28,8 @@ func _ready():
 	connect("visibility_changed", self, "_on_visibility_changed")
 	get_tree().paused = true
 
-func _on_nav_button_press(nav):
-	match nav:
+func menu_action(action):
+	match action:
 		"start":
 			Window.select_ui_tab(1)
 			Rakugo.start()
@@ -31,40 +50,36 @@ func _on_nav_button_press(nav):
 			if Rakugo.started:
 				emit_signal("show_main_menu_confirm")
 			else:
-				show_page(nav)
+				show_page(action)
 
 		"return":
 			if Rakugo.started:
 				Window.select_ui_tab(1)
 			else:
-				show_page(nav)
+				show_page(action)
 
 		"quit":
 			Window.QuitScreen.show()
 
 		_:
-			show_page(nav)
-
-const page_action_index:= {
-	'main_menu':0,
-	'return':0,
-	'about':1,
-	'help':1,
-	'history':2,
-	'preferences':3,
-	'save':4,
-	'load':4
-}
+			show_page(action)
 
 func show_page(action):
-	emit_signal("show_menu", action, Rakugo.started)
+	$"%CurrentSubMenu".show()
+	$"%CurrentSubMenu".text = action.capitalize()
+
 	if action in page_action_index:
 		$SubMenus.current_tab = page_action_index[action]
 		Window.select_ui_tab(0)
 
+	if action in buttons:
+		var b := get_node(buttons[action]) as Button
+		if !b.pressed:
+			b.pressed = true
+
 func save_menu(screenshot):
 	$SubMenus/SavesSlotScreen.save_mode = true
-	$SubMenus/SavesSlotScreen.screenshot = screenshot
+	# $SubMenus/SavesSlotScreen.screenshot = screenshot
 	show_page("save")
 
 func load_menu():
@@ -96,7 +111,69 @@ func _screenshot_on_input(event):
 func _input(event):
 	if visible:
 		if event.is_action_pressed("ui_cancel"):
-			_on_nav_button_press("return")
+			menu_action("return")
 
 func _on_visibility_changed():
 	get_tree().paused = visible
+	for nav_button in get_tree().get_nodes_in_group("nav_button"):
+		if "pause_menu" in nav_button.get_groups():
+			nav_button.visible = Rakugo.started
+		
+		if "main_menu" in nav_button.get_groups():
+			nav_button.visible = !Rakugo.started
+
+func _on_Start():
+	menu_action("start")
+
+func _on_Continue():
+	menu_action("continue")
+
+func _on_History(button_pressed:bool):
+	if button_pressed:
+		menu_action("history")
+
+func _on_Save(button_pressed:bool):
+	if button_pressed:
+		menu_action("save")
+
+func _on_Load(button_pressed:bool):
+	if button_pressed:
+		menu_action("load")
+
+func _on_Preferences(button_pressed:bool):
+	if button_pressed:
+		menu_action("preferences")
+
+func _on_MainMenu():
+	menu_action("main_menu")
+
+func _on_About(button_pressed:bool):
+	if button_pressed:
+		menu_action("about")
+
+func _on_Help(button_pressed:bool):
+	if button_pressed:
+		menu_action("help")
+
+func _on_Quit():
+	menu_action("quit")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

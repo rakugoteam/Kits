@@ -8,9 +8,10 @@
 [ext_resource path="res://addons/vnkit/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/vnkit/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://addons/vnkit/Screens/PreferencesScreen/PreferencesScreen.tscn" type="PackedScene" id=12]
-[ext_resource path="res://addons/vnkit/Screens/MenuBar/MenuBar.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="ButtonGroup" id=2]
 
 [node name="Screens" type="Control"]
 anchor_right = 1.0
@@ -64,14 +65,198 @@ mouse_filter = 2
 visible = false
 mouse_filter = 2
 
-[node name="MenuBar" parent="." instance=ExtResource( 16 )]
+[node name="MenuBar" type="Panel" parent="."]
 anchor_right = 0.22
+anchor_bottom = 1.0
 mouse_filter = 2
+
+[node name="SubMenu" type="VBoxContainer" parent="MenuBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CurrentSubMenu" type="Label" parent="MenuBar/SubMenu"]
+unique_name_in_owner = true
+visible = false
+margin_right = 205.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_vertical = 9
+custom_colors/font_color = Color( 0.756863, 0.878431, 1, 1 )
+text = "Preferences"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainMenuReturnConfirmPanel" type="Panel" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuBar/SubMenu"]
+margin_right = 205.0
+margin_bottom = 537.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NavList" type="VBoxContainer" parent="MenuBar/SubMenu/ScrollContainer"]
+margin_right = 205.0
+margin_bottom = 537.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 12
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["main_menu", "nav_button"]]
+margin_top = 119.0
+margin_right = 205.0
+margin_bottom = 138.0
+action_mode = 0
+text = "Start"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["any_menu", "nav_button"]]
+margin_top = 150.0
+margin_right = 205.0
+margin_bottom = 169.0
+disabled = true
+action_mode = 0
+text = "Continue"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="History" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["nav_button", "pause_menu"]]
+unique_name_in_owner = true
+margin_top = 181.0
+margin_right = 205.0
+margin_bottom = 200.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "History"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["nav_button", "pause_menu"]]
+unique_name_in_owner = true
+margin_top = 212.0
+margin_right = 205.0
+margin_bottom = 231.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "Save"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["any_menu", "nav_button"]]
+unique_name_in_owner = true
+margin_top = 243.0
+margin_right = 205.0
+margin_bottom = 262.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "Load"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Preferences" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["any_menu", "nav_button"]]
+unique_name_in_owner = true
+margin_top = 274.0
+margin_right = 205.0
+margin_bottom = 293.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "Preferences"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["nav_button", "pause_menu"]]
+unique_name_in_owner = true
+margin_top = 305.0
+margin_right = 205.0
+margin_bottom = 324.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "Main Menu"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="About" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["any_menu", "nav_button"]]
+unique_name_in_owner = true
+margin_top = 336.0
+margin_right = 205.0
+margin_bottom = 355.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "About"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["any_menu", "nav_button"]]
+unique_name_in_owner = true
+margin_top = 367.0
+margin_right = 205.0
+margin_bottom = 386.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 2 )
+text = "Help"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="MenuBar/SubMenu/ScrollContainer/NavList" groups=["main_menu", "nav_button"]]
+margin_top = 398.0
+margin_right = 205.0
+margin_bottom = 417.0
+action_mode = 0
+text = "Quit"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Return" type="Button" parent="MenuBar/SubMenu" groups=["nav_button", "pause_menu"]]
+margin_top = 541.0
+margin_right = 205.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+action_mode = 0
+text = "Return"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmReturnPanel" type="Panel" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -82,7 +267,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainMenuReturnConfirm" type="AcceptDialog" parent="MainMenuReturnConfirmPanel"]
+[node name="ReturnConfirm" type="AcceptDialog" parent="ConfirmReturnPanel"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -98,8 +284,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="show_menu" from="." to="MenuBar" method="_on_show_menu"]
-[connection signal="nav_button_press" from="MenuBar" to="." method="_on_nav_button_press"]
-[connection signal="confirmed" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_confirmed"]
-[connection signal="popup_hide" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="MainMenuReturnConfirmPanel" method="_on_popup_hide"]
-[connection signal="show_main_menu" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="." method="_on_nav_button_press"]
+[connection signal="pressed" from="MenuBar/SubMenu/ScrollContainer/NavList/Start" to="." method="_on_Start"]
+[connection signal="pressed" from="MenuBar/SubMenu/ScrollContainer/NavList/Continue" to="." method="_on_Continue"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/History" to="." method="_on_History"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/Save" to="." method="_on_Save"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/Load" to="." method="_on_Load"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/Preferences" to="." method="_on_Preferences"]
+[connection signal="pressed" from="MenuBar/SubMenu/ScrollContainer/NavList/MainMenu" to="." method="_on_MainMenu"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/About" to="." method="_on_About"]
+[connection signal="toggled" from="MenuBar/SubMenu/ScrollContainer/NavList/Help" to="." method="_on_Help"]
+[connection signal="pressed" from="MenuBar/SubMenu/ScrollContainer/NavList/Quit" to="." method="_on_Quit"]
+[connection signal="confirmed" from="ConfirmReturnPanel/ReturnConfirm" to="ConfirmReturnPanel/ReturnConfirm" method="_on_confirmed"]
+[connection signal="popup_hide" from="ConfirmReturnPanel/ReturnConfirm" to="ConfirmReturnPanel" method="_on_popup_hide"]
+[connection signal="show_main_menu" from="ConfirmReturnPanel/ReturnConfirm" to="." method="_on_nav_button_press"]
