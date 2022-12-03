@@ -45,8 +45,7 @@ func _on_nav_button_press(nav):
 		_:
 			show_page(nav)
 
-
-const page_action_index:Dictionary = {
+const page_action_index:= {
 	'main_menu':0,
 	'return':0,
 	'about':1,
