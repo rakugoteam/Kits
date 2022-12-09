@@ -25,11 +25,21 @@ func get_history() -> Array:
 
 func add_to_history(type:String, character:Dictionary, text:String, extra:={}) -> void:
 	var history = get_history()
-	history.append({
+	prints("History:", history)
+	prints("History new item:", type, character, text)
+	var new_item = {
 		"type": type,
 		"character": character,
 		"text": text
-	}.merge(extra))
+	} 
+
+	# .merge(extra) - don't works returns Null!
+	# so I must to use for
+	for k in extra.keys():
+		new_item[k] = extra[k]
+
+	history.append(new_item)
+	prints("History after merge:", history)
 	Rakugo.set_variable("_history", history)
 
 func _on_say(character:Dictionary, text:String) -> void:
@@ -64,6 +74,11 @@ func _on_visibility_changed() -> void:
 	
 	var new_item:Control = null
 	var history = Rakugo.get_variable("_history")
+
+	if history.empty():
+		return
+
+	prints("History:", history)
 	
 	for item in history:
 		new_item = HistoryItem.instance()
