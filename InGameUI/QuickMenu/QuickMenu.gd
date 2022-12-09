@@ -1,5 +1,12 @@
 extends Control
 
+onready var hide_button = $Hide
+
+var can_hide := true
+
+func _ready():
+	Rakugo.connect("variable_changed", self, "_on_variable_changed")
+
 func _on_Hide_pressed():
 	Window.Tabs.get_child(1).hide()
 
@@ -28,6 +35,12 @@ func _on_Preferences_pressed():
 func _on_Quit_pressed():
 	_on_Hide_pressed()
 	Window.Screens.show_page("quit")
+
+func _on_variable_changed(variable, value):
+	if variable == "_can_hide_ui":
+		can_hide = value
+		set_process(value)
+		hide_button.disabled = not value
 
 func _process(delta):
 	if Input.is_action_just_pressed("hide_ui"):

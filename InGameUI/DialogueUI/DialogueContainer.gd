@@ -28,18 +28,18 @@ func _on_ask(character:Dictionary, question:String, default_answer:String) -> vo
 	answer_edit.show()
 	answer_edit.grab_focus()
 	answer_edit.placeholder_text = default_answer
+	Rakugo.set_variable("_can_hide_ui", false)
 
 func _on_ask_entered(answer:String) -> void:
 	answer_edit.hide()
 	answer_edit.placeholder_text = ""
 	answer_edit.text = ""
 	Rakugo.ask_return(answer)
+	Rakugo.set_variable("_can_hide_ui", true)
 
 func _process(delta) -> void:
 	var ui_accept := Input.is_action_just_pressed("ui_accept")
 	if Rakugo.is_waiting_step() and ui_accept:
 		Rakugo.do_step()
-		
-		
 
 
